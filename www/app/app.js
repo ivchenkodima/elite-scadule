@@ -16,8 +16,30 @@ angular.module('eliteApp', ['ionic'])
     $stateProvider
 
       .state('home', {
+        abstract: true,
         url: "/home",
         templateUrl:"app/home/home.html"
-      });
-    $urlRouterProvider.otherwise('/home');
+      })
+      .state('home.leagues', {
+        url:'/leagues',
+        view: {
+          'tab-leagues': {
+            templateUrl: "app/home/leagues.html"
+          }
+        }
+      })
+      .state('home.myteams', {
+        url: "/myteams",
+        view: {
+          "tab-myteams": {
+            templateUrl: "app/home/myteams.html"
+          }
+        }
+      })
+      .state('app', {
+        url: '/app',
+        templateUrl: "app/layout/menu-layout.html"
+
+    });
+    $urlRouterProvider.otherwise('/home/leagues');
   });
